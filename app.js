@@ -32,11 +32,7 @@ const handleRequest = async (request) => {
         default:
             return new Response("Hello files!");
   }
-//   if (!pathname !== "/index.html" && !pathname !== "/about.html") {
-//       return new Response("Hello files!");
-//   } else {
-//       pathname = `/static${pathname}`
-//   }
+
 
 
 
