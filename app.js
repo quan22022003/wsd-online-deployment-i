@@ -19,14 +19,28 @@ import { serve } from "https://deno.land/std@0.171.0/http/server.ts";
 import { serveFile } from "https://deno.land/std@0.171.0/http/file_server.ts";
 
 const handleRequest = async (request) => {
-    const url = new URL(request.url);
-    const pathname = url.pathname;
-    let path = "static/index.html";
+  const url = new URL(request.url);
+  let pathname = url.pathname;
+  
+  switch (pathname) {
+        case "/index.html":
+            pathname = `static${pathname}`;
+            break;
+        case "/about.html":
+            pathname = `static${pathname}`;
+            break;
+        default:
+            return new Response("Hello files!");
+  }
+//   if (!pathname !== "/index.html" && !pathname !== "/about.html") {
+//       return new Response("Hello files!");
+//   } else {
+//       pathname = `/static${pathname}`
+//   }
 
-    if (pathname.includes("css")) {
-      path = "static/styles.css"
-    }
-    return await serveFile(request, path);
+
+
+  return await serveFile(request, pathname);
 };
 
 serve(handleRequest, { port: 7777 });
