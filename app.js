@@ -19,24 +19,7 @@ import { serve } from "https://deno.land/std@0.171.0/http/server.ts";
 import { serveFile } from "https://deno.land/std@0.171.0/http/file_server.ts";
 
 const handleRequest = async (request) => {
-  const url = new URL(request.url);
-  let pathname = url.pathname;
-  
-  switch (pathname) {
-        case "/index.html":
-            pathname = `static${pathname}`;
-            break;
-        case "/about.html":
-            pathname = `static${pathname}`;
-            break;
-        default:
-            return new Response("Hello files!");
-  }
-
-
-
-
-  return await serveFile(request, pathname);
+    return new Response("Seeking truths beyond meaning of life, you will find 43");  
 };
 
 serve(handleRequest, { port: 7777 });
